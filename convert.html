@@ -1,0 +1,843 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Any Converter</title>
+    <style>
+      /* Global styles */
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Arial', sans-serif;
+      }
+
+      body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          height: 100vh;
+          background: linear-gradient(135deg, #ff8008, #ffc837); /* Gradient background */
+          animation: gradientAnimation 10s ease infinite;
+      }
+
+      @keyframes gradientAnimation {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+      }
+
+      h1 {
+          color: #fff;
+          font-size: 3em;
+          margin-bottom: 20px;
+          text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+          font-family: 'Cursive', sans-serif;
+      }
+
+      hr {
+          width: 100%;
+          border: 1px solid #fff;
+          margin-bottom: 20px;
+      }
+
+      form {
+          background: rgba(0, 0, 0, 0.8);
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+          width: 80%;
+          max-width: 500px;
+      }
+
+      label {
+          display: block;
+          margin-bottom: 10px;
+          font-weight: bold;
+          color: #fff;
+      }
+
+      input[type="file"],
+      select,
+      button[type="submit"] {
+          display: block;
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 20px;
+          border: none;
+          border-radius: 5px;
+          font-size: 16px;
+          transition: all 0.3s ease;
+      }
+
+      input[type="file"] {
+          background-color: #ff8008;
+          color: #fff;
+      }
+
+      select {
+          background-color: #ffc837;
+          color: #000;
+      }
+
+      button[type="submit"] {
+          background-color: #4CAF50;
+          color: #fff;
+          cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+          background-color: #45a049;
+          transform: scale(1.05);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+</head>
+<body>
+
+
+    <h1> Any Converter</h1>
+    <hr>
+    <form method="post" enctype="multipart/form-data">
+        <label for="file">Choose file:</label>
+        <input type="file" id="file" name="file" required /><br /><br />
+        <label for="output_format">Convert to:</label>
+        <select id="output_format" name="output_format" required>
+            <option value="pdf">PDF</option>
+            <option value="png">PNG</option>
+            <option value="jpg">JPG</option>
+            <option value="docx">DOCX</option>
+        </select><br /><br />
+        <form
+        action="https://v2.convertapi.com/convert/pdf/to/jpg?auth=secret_buVfDh1PKlSZDMGQ&download=attachment"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <button type="submit">Convert</button>
+    </form>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Any Converter</title>
+    <style>
+        /* Global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #121212; /* Dark theme background */
+            color: #fff;
+            animation: gradientAnimation 10s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff5722; /* Vibrant orange */
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+            font-family: 'Cursive', sans-serif;
+        }
+
+        hr {
+            width: 100%;
+            border: 1px solid #ff5722;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            width: 80%;
+            max-width: 500px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        input[type="file"],
+        select,
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="file"] {
+            background-color: #ff8008;
+            color: #fff;
+        }
+
+        select {
+            background-color: #ffc837;
+            color: #000;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Any Converter</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Any Converter</h1>
+        <hr>
+        <form method="post" enctype="multipart/form-data">
+            <label for="file">Choose file:</label>
+            <input type="file" id="file" name="file" required /><br /><br />
+            <label for="output_format">Convert to:</label>
+            <select id="output_format" name="output_format" required>
+                <option value="pdf">PDF</option>
+                <option value="png">PNG</option>
+                <option value="jpg">JPG</option>
+                <option value="docx">DOCX</option>
+            </select><br /><br />
+            <form
+            action="https://v2.convertapi.com/convert/pdf/to/jpg?auth=secret_buVfDh1PKlSZDMGQ&download=attachment"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <button type="submit">Convert</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Any Converter. All rights reserved.</p>
+    </footer>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Any Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #121212;
+            color: #fff;
+        }
+
+        header {
+            background: #212121;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ff5722;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff5722;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff5722;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        hr {
+            width: 80%;
+            border: 1px solid #ff5722;
+            margin-bottom: 30px;
+        }
+
+        .form-container {
+            background: #1e1e1e;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 87, 34, 0.7);
+            width: 100%;
+            max-width: 500px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(255, 87, 34, 1);
+        }
+
+        .form-title {
+            margin-bottom: 15px;
+            color: #fff;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        input[type="file"],
+        select,
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="file"] {
+            background-color: #ff8008;
+            color: #fff;
+        }
+
+        select {
+            background-color: #ffc837;
+            color: #000;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            background: #212121;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://via.placeholder.com/40" alt="Logo">
+            Any Converter
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Any Converter</h1>
+        <hr>
+        <div class="form-container">
+            <div class="form-title">Upload and Convert Your File</div>
+            <form method="post" enctype="multipart/form-data">
+                <label for="file">Choose file:</label>
+                <input type="file" id="file" name="file" required /><br /><br />
+                <label for="output_format">Convert to:</label>
+                <select id="output_format" name="output_format" required>
+                    <option value="pdf">PDF</option>
+                    <option value="png">PNG</option>
+                    <option value="jpg">JPG</option>
+                    <option value="docx">DOCX</option>
+                </select><br /><br />
+                <form
+                action="https://v2.convertapi.com/convert/pdf/to/jpg?auth=secret_buVfDh1PKlSZDMGQ&download=attachment"
+                method="post"
+                enctype="multipart/form-data"
+              >
+                <button type="submit">Convert</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Any Converter. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Any Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #121212;
+            color: #fff;
+        }
+
+        header {
+            background: #212121;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ff5722;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff5722;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff5722;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        hr {
+            width: 80%;
+            border: 1px solid #ff5722;
+            margin-bottom: 30px;
+        }
+
+        .form-container {
+            background: #1e1e1e;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 87, 34, 0.7);
+            width: 100%;
+            max-width: 500px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(255, 87, 34, 1);
+        }
+
+        .form-title {
+            margin-bottom: 15px;
+            color: #fff;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        input[type="file"],
+        select,
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="file"] {
+            background-color: #ff8008;
+            color: #fff;
+        }
+
+        select {
+            background-color: #ffc837;
+            color: #000;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .features, .testimonials, .faq, .cta-section {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .faq h2, .cta-section h2 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            color: #ff5722;
+        }
+
+        .features p, .testimonials p, .faq p, .cta-section p {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 5px;
+            background-color: #ccc;
+            margin-bottom: 10px;
+            border-radius: 3px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            width: 0;
+            border-radius: 3px;
+        }
+
+        footer {
+            background: #212121;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://via.placeholder.com/40" alt="Logo">
+            Any Converter
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Any Converter</h1>
+        <hr>
+        <div class="form-container">
+            <div class="form-title">Upload and Convert Your File</div>
+            <form method="post" enctype="multipart/form-data">
+                <label for="file">Choose file:</label>
+                <input type="file" id="file" name="file" required /><br /><br />
+                <label for="output_format">Convert to:</label>
+                <select id="output_format" name="output_format" required>
+                    <option value="pdf">PDF</option>
+                    <option value="png">PNG</option>
+                    <option value="jpg">JPG</option>
+                    <option value="docx">DOCX</option>
+                </select><br /><br />
+                <form
+                action="https://v2.convertapi.com/convert/pdf/to/jpg?auth=secret_buVfDh1PKlSZDMGQ&download=attachment"
+                method="post"
+                enctype="multipart/form-data"
+              >
+                <button type="submit">Convert</button>
+            </form>
+    
+            <div class="progress-bar">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+
+        <section class="features">
+            <h2>Features</h2>
+            <p>• Convert files to various formats in seconds.</p>
+            <p>• Easy to use and intuitive interface.</p>
+            <p>• Secure and reliable file handling.</p>
+        </section>
+
+        <section class="testimonials">
+            <h2>Testimonials</h2>
+            <div class="testimonial-item">"Any Converter saved my day! It's super fast and easy to use."</div>
+            <div class="testimonial-item">"I love the clean interface and the fast conversions."</div>
+            <div class="testimonial-item">"A must-have tool for everyone who deals with different file formats."</div>
+        </section>
+
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <p><strong>Q:</strong> How long does the conversion take?</p>
+            <p><strong>A:</strong> It usually takes a few seconds to a minute depending on the file size.</p>
+            <p><strong>Q:</strong> Can I convert multiple files?</p>
+            <p><strong>A:</strong> Currently, you can only convert one file at a time.</p>
+            <p><strong>Q:</strong> What formats can I convert to?</p>
+            <p><strong>A:</strong> You can convert to PDF, PNG, JPG, and DOCX formats.</p>
+        </section>
+
+        <section class="cta-section">
+            <h2>Join Our Newsletter</h2>
+            <p>Stay updated with the latest features and offers!</p>
+            <form method="post" action="/subscribe">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Any Converter. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Progress bar logic
+        document.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission for demo purposes
+            let progressBarFill = document.querySelector('.progress-bar-fill');
+            let progress = 0;
+
+            // Simulate file upload progress
+            let interval = setInterval(function () {
+                progress += 10;
+                progressBarFill.style.width = progress + '%';
+
+                if (progress >= 100) {
+                    clearInterval(interval);
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+

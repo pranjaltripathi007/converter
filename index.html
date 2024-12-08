@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AnyConvert</title>
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+    <style>
+        @font-face {
+  font-family: GilroyLight;
+  src: url(./assets/Gilroy/Gilroy-Light.otf);
+}
+
+@font-face {
+  font-family: GilroyMedium;
+  src: url(./assets/Gilroy/Gilroy-Medium.ttf);
+}
+
+@font-face {
+  font-family: GilroyBold;
+  src: url(./assets/Gilroy/Gilroy-Bold.ttf);
+}
+
+@font-face {
+  font-family: GilroyRegular;
+  src: url(./assets/Gilroy/Gilroy-Regular.ttf);
+}
+
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  /* scroll-behavior: smooth; */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#loader {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  transition: all ease 0.7s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#loader h1 {
+  font-family: GilroyBold;
+  font-size: 4vw;
+  color: transparent;
+  background: linear-gradient(to right, orange, #fe330a);
+  -webkit-background-clip: text;
+  position: absolute;
+  opacity: 0;
+  animation-name: loaderanime;
+  animation-duration: 1s;
+  animation-delay: 1s;
+  animation-timing-function: linear;
+}
+
+#loader h1:nth-child(2) {
+  animation-delay: 2s;
+}
+
+#loader h1:nth-child(3) {
+  animation-delay: 3s;
+}
+
+#wrapper {
+  z-index: 10;
+  position: relative;
+}
+
+header {
+  position: relative;
+  padding: 3vw 2vw;
+  width: 100vw;
+  height: 15vh;
+  background-color: #efeae3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+img {
+  width: 150px;
+}
+
+nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+.navbar-anchor {
+  border: 1px solid #0000005a;
+  border-radius: 50px;
+  transition: all ease 0.3s;
+  overflow: hidden;
+  text-decoration: none;
+  color: #0000005a;
+  position: relative;
+}
+
+.navbar-anchor h4 {
+  font-family: GilroyLight, sans-serif;
+  font-weight: 900;
+  position: relative;
+  padding: 10px 20px;
+  z-index: 9;
+  transition: all ease 0.2s;
+}
+
+.navbar-anchor::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  left: 0%;
+  bottom: -100%;
+  border-radius: 50px;
+  transition: all ease 0.4s;
+}
+
+.navbar-anchor:hover::after {
+  bottom: 0%;
+  border-radius: 0%;
+}
+
+.navbar-anchor:hover h4 {
+  color: #fff;
+}
+
+.page1 {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #efeae3;
+  padding: 0 2vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.center {
+  width: 100%;
+  min-height: 72vh;
+  padding: 4vw 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.left {
+  width: 32%;
+  font-family: GilroyMedium;
+  font-size: 2vw;
+  font-weight: 600;
+  line-height: 2.2vw;
+  text-align: left;
+  letter-spacing: -1px;
+}
+
+.right {
+  font-family: GilroyBold;
+  font-size: 8vw;
+  line-height: 6vw;
+  font-weight: 600;
+  color: #000;
+  font-weight: 600;
+  text-transform: uppercase;
+  align-items: center;
+  text-align: left;
+  letter-spacing: -3px;
+}
+
+span {
+  font-family: GilroyLight;
+  font-weight: 600;
+  color: #fe330a;
+}
+
+.flow1 {
+  width: 36vw;
+  height: 29vw;
+  background-color: #fe330a;
+  position: absolute;
+  right: 0%;
+  top: 18%;
+  filter: blur(15px);
+}
+
+.flow2 {
+  width: 28vw;
+  height: 28vw;
+  background-color: #fe330a;
+  position: absolute;
+  right: 1%;
+  top: 14%;
+  filter: blur(20px);
+  border-radius: 50%;
+  animation-name: animeflow2;
+  animation-iteration-count: infinite;
+  animation-duration: 4s;
+  animation-direction: alternate;
+}
+
+.flow3 {
+  width: 30vw;
+  height: 30vw;
+  background-color: #fe330a;
+  position: absolute;
+  right: 12%;
+  top: 18%;
+  filter: blur(20px);
+  border-radius: 50%;
+  animation-name: animeflow3;
+  animation-iteration-count: infinite;
+  animation-duration: 4s;
+  animation-direction: alternate;
+}
+
+.video {
+  width: 100%;
+  height: 110vh;
+  background-color: #000;
+  position: relative;
+  border-radius: 25px;
+}
+
+.page2 {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #efeae3;
+}
+
+.marquee {
+  padding: 4vw 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.marquee::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+  white-space: nowrap;
+  display: inline-block;
+  animation-name: marquee;
+  animation-duration: 8s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  pointer-events: none;
+  touch-action: none;
+}
+
+.container h1 {
+  font-family: GilroyBold;
+  font-size: 10vw;
+  letter-spacing: -4px;
+  display: inline-block;
+}
+
+.small-logo {
+  width: 5vw;
+  height: 5vw;
+  margin: 1vw 3vw;
+  border-radius: 50%;
+  background-color: #fe330a;
+  display: inline-block;
+}
+
+.last-page {
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+}
+
+footer {
+  width: 100vw;
+  height: 100vh;
+  padding: 1vw 1vw;
+  position: fixed;
+  background-color: #000;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 7vw;
+  bottom: 0;
+  color: #efeae3;
+}
+
+footer h1 {
+  font-family: GilroyBold;
+  font-size: 19vw;
+  font-weight: 600;
+  letter-spacing: -10px;
+  padding: 1vw 0;
+}
+
+.shapeflow1 {
+  position: absolute;
+  background-color: #fe330a;
+  filter: blur(50px);
+  top: -50%;
+  left: -20%;
+  width: 90%;
+  height: 90%;
+  animation-name: shapeflow1;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.shapeflow2 {
+  position: absolute;
+  background-color: #fe330a;
+  filter: blur(50px);
+  right: -27%;
+  top: -27%;
+  width: 70%;
+  height: 90%;
+  animation-name: shapeflow2;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.footerupper {
+  width: 100%;
+  padding: 1vw 6vw;
+  position: relative;
+}
+
+.tagline {
+  font-family: GilroyBold;
+  font-weight: 100;
+  font-size: 1.5vw;
+}
+
+.footerlower {
+  position: relative;
+}
+
+.footer-end {
+  font-family: GilroyLight;
+  font-size: 1.5vw;
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1vw 0;
+  border-top: 1px solid #504a45;
+}
+
+@keyframes loaderanime {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes animeflow2 {
+  from {
+    transform: translate(0%, 0%);
+  }
+  to {
+    transform: translate(0%, 48%);
+  }
+}
+
+@keyframes animeflow3 {
+  from {
+    transform: translate(0%, 0%) skew(0);
+  }
+  to {
+    transform: translate(-25%, 0%) skew(10deg);
+  }
+}
+
+@keyframes shapeflow1 {
+  from {
+    transform: rotate(-10deg);
+  }
+  to {
+    transform: rotate(-20deg);
+  }
+}
+@keyframes shapeflow2 {
+  from {
+    transform: rotate(30deg);
+  }
+  to {
+    transform: rotate(45deg);
+  }
+}
+
+/* #animatedlogo1 {
+  width: 32vw;
+  height: 32vw;
+  position: absolute;
+  border-radius: 50%;
+  background-color: orangered;
+  bottom: 5%;
+  left: 28%;
+  filter: blur(50px);
+  animation-name: animelogo1;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+
+
+#animatedlogo2 {
+  width: 26vw;
+  height: 26vw;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #FE330A;
+  bottom: 12%;
+  left: 34%;
+  filter: blur(30px);
+  animation-name: animelogo2;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;  
+} 
+
+
+@keyframes animelogo1 {
+  from{
+    transform: translate(10%,-10%)skew(0);
+  }
+  to{
+    transform: translate(-10%,10%)skew(-20deg);
+  }
+  
+}
+
+
+@keyframes animelogo2 {
+  from{
+    transform: translate(8%,-8%)skew(0);
+  }
+  to{
+    transform: translate(-8%,8%)skew(-10deg);
+  }
+  
+} */
+
+    </style>
+</head>
+
+<body>
+    <section id="loader">
+        <h1>TRANSFORM</h1>
+        <h1>TRANSMUTE</h1>
+        <h1>TRANSFER</h1>
+    </section>
+    <section id="wrapper">
+        <header>
+            <img src="C:\Users\hp\Desktop\oncemorebackup\project2024\templates\logo.png" alt="logo here" />
+            <nav>
+                <a class="navbar-anchor" href="{{ url_for('tools') }}">
+                    <h4>Tools</h4>
+                </a>
+
+                <a class="navbar-anchor" href="#">
+                    <h4>Pricing</h4>
+                </a>
+
+                <a class="navbar-anchor" href="#">
+                    <h4>Join us</h4>
+                </a>
+
+                <a class="navbar-anchor" href="{{ url_for('convert') }}">
+                  
+                    <h4>Convert now</h4>
+                </a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="page1">
+                <section class="center">
+                    <section class="left">
+                        <p>
+                            With <span>AnyConvert</span><br />
+                            transcode, tweak and unveil hidden realms of infinite <br />
+                            possibilities within every file.
+                        </p>
+                    </section>
+                    <section class="right">
+                        <h1>
+                            in the art of <br />conversion,<br />we set your <br />files
+                            free.
+                        </h1>
+                    </section>
+                </section>
+                <section class="flow1"></section>
+                <section class="flow2"></section>
+                <section class="flow3"></section>
+                <section class="video"></section>
+            </section>
+
+            <section class="page2">
+                <section class="marquee">
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                    <section class="container">
+                        <h1>TRANSFORM</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSMUTE</h1>
+                        <section class="small-logo"></section>
+                        <h1>TRANSFER</h1>
+                        <section class="small-logo"></section>
+                    </section>
+                </section>
+            </section>
+            <!-- <section id="animatedlogo1"></section>
+            <section id="animatedlogo2"></section> -->
+            <section class="last-page"></section>
+        </main>
+    </section>
+    <footer>
+        <section class="shapeflow1"></section>
+        <section class="shapeflow2"></section>
+        <section class="footerupper">
+            <section class="tagline">
+                <h2>TRANSFORM,</h2>
+                <h2>TRANSMUTE,</h2>
+                <h2>TRANSFER.</h2>
+            </section>
+        </section>
+        <section class="footerlower">
+        <h1>AnyConvert</h1>
+        <section class="footer-end">
+            <h5>© AnyConvert. All rights reserved</h5>
+            <h5>Terms of Use</h5>
+            <h5>Privacy Policy</h5>
+            <h5>Contact Us</h5>
+        </section>
+        </section>
+    </footer>
+   <script>
+    var loader = document.querySelector("#loader")
+setTimeout(function(){
+    loader.style.top = "-100%"
+},4000)
+   </script>
+</body>
+
+</html>
